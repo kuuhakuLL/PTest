@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<questions>
+    <question>
+        <id>1</id>
+        <text>Тип развития, не определяющий стадии, через которые должен пройти ребенок называется:</text>
+        <answers>
+            <answer>непреформированным</answer>
+        </answers>
+        <distractor>преформированным</distractor>
+        <distractor>дискретным</distractor>
+    </question>
+    <question>
+        <id>2</id>
+        <text>Автором работы «Детская психология: теории, факты, проблемы» является..</text>
+        <answers>
+            <answer>Л.Ф.Обухова</answer>
+        </answers>
+        <distractor>И.С.Кон</distractor>
+        <distractor>В.С.Мухина</distractor>
+        <distractor>А.А.Бодалев</distractor>
+    </question>
+    <question>
+        <id>3</id>
+        <text>Представители бихевиоризма:</text>
+        <answers>
+            <answer>Б. Уотсон</answer>
+            <answer>Б. Скиннер</answer>
+        </answers>
+        <distractor>К. Роджерс</distractor>
+        <distractor>А. Валлон</distractor>
+    </question>
+    <question>
+        <id>4</id>
+        <text>Фаллическая стадия психосексуального развития ребенка (по З.Фрейду) характеризуется перемещением эрогенной зоны:</text>
+        <answers>
+            <answer>на генитальные органы</answer>
+        </answers>
+        <distractor>на рот</distractor>
+        <distractor>на анус</distractor>
+    </question>
+    <question>
+        <id>5</id>
+        <text>Психическое развитие ребенка с развитием  структур интеллекта связал:</text>
+        <answers>
+            <answer>Ж. Пиаже</answer>
+        </answers>
+        <distractor>А. Маслоу</distractor>
+        <distractor>Д.Б .Эльконин</distractor>
+    </question>
+    <question>
+        <id>6</id>
+        <text>Представителями гуманистической психологии развития личности являются:</text>
+        <answers>
+            <answer>К. Роджерс</answer>
+            <answer>А.Маслоу</answer>
+        </answers>
+        <distractor>Б.Скиннер</distractor>
+        <distractor>К.Хорни</distractor>
+    </question>
+    <question>
+        <id>7</id>
+        <text>К новообразованиям дошкольника относятся:</text>
+        <answers>
+            <answer>соподчинение мотивов</answer>
+            <answer>внутренняя позиция</answer>
+        </answers>
+        <distractor>эмоциональность</distractor>
+        <distractor>общительность</distractor>
+    </question>
+    <question>
+        <id>8</id>
+        <text>Гетерохронность развития подростка определяется:</text>
+        <answers>
+            <answer>неравномерным развитием</answer>
+        </answers>
+        <distractor>половым созреванием</distractor>
+        <distractor>быстрым ростом</distractor>
+    </question>
+
+</questions>

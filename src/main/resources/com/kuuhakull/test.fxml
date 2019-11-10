@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kuuhakull.TestController" alignment="CENTER"
+      prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <VBox fx:id="QwestVBox"></VBox>
+        <HBox>
+            <children>
+                <Button fx:id="BackButton" onAction="#backQwest">Назад</Button>
+                <Button fx:id="NextButton" onAction="#nextQwest">Вперед</Button>
+                <Button fx:id="ReplyQwest" onAction="#replyQwest">Ответить</Button>
+                <Button fx:id="PrimaryButton" onAction="#switchToPrimary" >Закончить тест</Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>
