@@ -32,8 +32,13 @@ public class Qwest {
     }
 
     public boolean chekAnswer(ArrayList<String> answer) {
-        if (!correctAnswer.containsAll(answer)){
+        if (correctAnswer.size()!=answer.size()){
             return false;
+        }
+        for (String item: answer){
+            if (!correctAnswer.contains(item)){
+                return false;
+            }
         }
         return true;
     }

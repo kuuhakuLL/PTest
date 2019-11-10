@@ -7,14 +7,14 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class TestController extends VBox {
     private ArrayList<Qwest> qwests;
     private int numberQwest;
     private Qwest qwest;
     private ToggleGroup group;
+    private TextField field;
+    private ArrayList<CheckBox> checkBoxes;
 
     @FXML
     private VBox QwestVBox;
@@ -25,17 +25,34 @@ public class TestController extends VBox {
         qwests = App.qwests;
         setNumberQwest(0);
         group = new ToggleGroup();
-        QwestVBox.getChildren().addAll(new Button("qer"),new Button("qer"),new Button("qer"),new Button("qer"));
         setQwestVBox();
     }
 
     @FXML
     public void replyQwest(ActionEvent event){
-        RadioButton selection = (RadioButton) group.getSelectedToggle();
         ArrayList<String> answer = new ArrayList<>();
-        answer.add(selection.getText());
-        System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
-
+        switch (qwest.getTypeQwest()){
+            case 0: {
+                RadioButton selection = (RadioButton) group.getSelectedToggle();
+                answer.add(selection.getText());
+                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                break;
+            }
+            case 1: {
+                answer.add(field.getText());
+                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                break;
+            }
+            case 2: {
+                for (CheckBox item: checkBoxes){
+                    if(item.isSelected())
+                        answer.add(item.getText());
+                }
+                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                break;
+            }
+            default: break;
+        }
     }
 
     public void setNumberQwest(int i){
@@ -54,10 +71,32 @@ public class TestController extends VBox {
         Label NumberQwest = new Label("№ " + (numberQwest + 1) + " / " + qwests.size());
         Label textQ = new Label(qwest.getText());
         QwestVBox.getChildren().addAll(NumberQwest, textQ);
-        for (String item: qwest.getAllAnswer()){
-            RadioButton radioButton = new RadioButton(item);
-            radioButton.setToggleGroup(group);
-            QwestVBox.getChildren().add(radioButton);
+        switch (qwest.getTypeQwest()){
+            case 0: {
+                for (String item: qwest.getAllAnswer()){
+                    RadioButton radioButton = new RadioButton(item);
+                    radioButton.setToggleGroup(group);
+                    QwestVBox.getChildren().add(radioButton);
+                }
+                break;
+            }
+            case 1: {
+                field = new TextField();
+                QwestVBox.getChildren().add(field);
+                break;
+            }
+            case 2: {
+                checkBoxes = new ArrayList<>();
+                for (String item: qwest.getAllAnswer()){
+                    checkBoxes.add(new CheckBox(item));
+                }
+                QwestVBox.getChildren().addAll(checkBoxes);
+                break;
+            }
+//            case 3: {
+//                break;
+//            }
+            default: break;
         }
     }
 
