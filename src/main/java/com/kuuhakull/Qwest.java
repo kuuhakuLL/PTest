@@ -13,9 +13,10 @@ public class Qwest {
     Qwest(int id, String title, ArrayList<String> answer, ArrayList<String> distract, byte type){
         idQwest = id;
         text = title;
-        correctAnswer = new HashSet<>(); allAnswer = new ArrayList<>();
+        correctAnswer = new HashSet<>();
+        allAnswer = new ArrayList<>();
         correctAnswer.addAll(answer);
-        allAnswer.addAll(answer); allAnswer.addAll(distract);
+        allAnswer.addAll(distract);
         typeQwest = type;
     }
 
@@ -35,6 +36,9 @@ public class Qwest {
         if (correctAnswer.size()!=answer.size()){
             return false;
         }
+        if (!correctAnswer.containsAll(answer)){
+            System.out.println(answer.get(0));
+        };
         for (String item: answer){
             if (!correctAnswer.contains(item)){
                 return false;
@@ -42,5 +46,4 @@ public class Qwest {
         }
         return true;
     }
-
 }

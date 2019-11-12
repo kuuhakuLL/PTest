@@ -16,7 +16,7 @@
                 <Button fx:id="BackButton" onAction="#backQwest">Назад</Button>
                 <Button fx:id="NextButton" onAction="#nextQwest">Вперед</Button>
                 <Button fx:id="ReplyQwest" onAction="#replyQwest">Ответить</Button>
-                <Button fx:id="PrimaryButton" onAction="#switchToPrimary" >Закончить тест</Button>
+                <Button fx:id="PrimaryButton" onAction="#switchToPrimary" >Завершить</Button>
             </children>
         </HBox>
     </children>

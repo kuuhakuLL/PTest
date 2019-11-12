@@ -1,8 +1,11 @@
 package com.kuuhakull;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -15,55 +18,48 @@ public class TestController extends VBox {
     private ToggleGroup group;
     private TextField field;
     private ArrayList<CheckBox> checkBoxes;
-
+    private ArrayList<ComboBox<String>> comboBoxes;
+    private boolean [] answers;
     @FXML
     private VBox QwestVBox;
 
     @FXML
-    void initialize(){
-        numberQwest=0;
-        qwests = App.qwests;
-        setNumberQwest(0);
-        group = new ToggleGroup();
-        setQwestVBox();
-    }
-
-    @FXML
     public void replyQwest(ActionEvent event){
-        ArrayList<String> answer = new ArrayList<>();
+        ArrayList<String> reply = new ArrayList<>();
         switch (qwest.getTypeQwest()){
             case 0: {
                 RadioButton selection = (RadioButton) group.getSelectedToggle();
-                answer.add(selection.getText());
-                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                reply.add(selection.getText());
+
                 break;
             }
             case 1: {
-                answer.add(field.getText());
-                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                reply.add(field.getText().toLowerCase());
+                field = null;
                 break;
             }
             case 2: {
                 for (CheckBox item: checkBoxes){
                     if(item.isSelected())
-                        answer.add(item.getText());
+                        reply.add(item.getText());
                 }
-                System.out.println((qwests.get(numberQwest).chekAnswer(answer)));
+                checkBoxes = null;
+                break;
+            }
+            case 3: {
+                String rezalt = "";
+                for(ComboBox<String> item: comboBoxes){
+                    rezalt += item.getValue().split(" ")[0] +" ";
+                }
+                comboBoxes = null;
+                reply.add(rezalt);
                 break;
             }
             default: break;
         }
-    }
-
-    public void setNumberQwest(int i){
-        if(numberQwest + i >= 0 && numberQwest + i < qwests.size() ){
-            this.numberQwest = numberQwest + i;
-            setQwest();
-        }
-    }
-
-    public void setQwest() {
-        this.qwest = qwests.get(numberQwest);
+        answers[numberQwest] = qwest.chekAnswer(reply);
+        System.out.println(answers[numberQwest]);
+        setNumberQwest(1);
     }
 
     public void setQwestVBox() {
@@ -93,25 +89,56 @@ public class TestController extends VBox {
                 QwestVBox.getChildren().addAll(checkBoxes);
                 break;
             }
-//            case 3: {
-//                break;
-//            }
+            case 3: {
+                comboBoxes = new ArrayList<>();
+                ObservableList<String> allAnswers = FXCollections.observableList(qwest.getAllAnswer());
+                for (int i = 0; i < allAnswers.size(); i++ ){
+                    ComboBox<String> comboBox = new ComboBox<String>(allAnswers);
+                    comboBoxes.add(comboBox);
+                    Label namber = new Label((i+1) + ".");
+                    HBox hBox = new HBox(namber, comboBox);
+                    QwestVBox.getChildren().add(hBox);
+                }
+                break;
+            }
             default: break;
         }
     }
 
+    public void setNumberQwest(int i){
+        if(numberQwest + i >= 0 && numberQwest + i < qwests.size() ){
+            this.numberQwest = numberQwest + i;
+            setQwest();
+            setQwestVBox();
+        }
+    }
+    private void setQwest() {
+        this.qwest = qwests.get(numberQwest);
+    }
+
+    @FXML
+    void initialize(){
+        numberQwest=0;
+        qwests = App.qwests;
+        answers = new boolean[qwests.size()];
+        group = new ToggleGroup();
+        setNumberQwest(0);
+    }
     @FXML
     public void switchToPrimary(ActionEvent event) throws IOException {
+        int rezalt = 0;
+        for (int i=0; i<answers.length; i++){
+            rezalt += answers[i] ? 1 : 0;
+        }
+        System.out.println(rezalt);
         App.setRoot("primary","");
     }
     @FXML
     public void nextQwest(ActionEvent event)throws IOException{
         setNumberQwest(1);
-        setQwestVBox();
     }
     @FXML
     public void backQwest (ActionEvent event)throws IOException{
         setNumberQwest(-1);
-        setQwestVBox();
     }
 }
