@@ -27,10 +27,10 @@ public class TestController extends VBox {
     public void replyQwest(ActionEvent event){
         ArrayList<String> reply = new ArrayList<>();
         switch (qwest.getTypeQwest()){
-            case 0: {
+            case 0:
+            case 4:{
                 RadioButton selection = (RadioButton) group.getSelectedToggle();
                 reply.add(selection.getText());
-
                 break;
             }
             case 1: {
@@ -49,7 +49,7 @@ public class TestController extends VBox {
             case 3: {
                 String rezalt = "";
                 for(ComboBox<String> item: comboBoxes){
-                    rezalt += item.getValue().split(" ")[0] +" ";
+                    rezalt += item.getValue().split(" ")[0];
                 }
                 comboBoxes = null;
                 reply.add(rezalt);
@@ -66,12 +66,14 @@ public class TestController extends VBox {
         QwestVBox.getChildren().clear();
         Label NumberQwest = new Label("№ " + (numberQwest + 1) + " / " + qwests.size());
         Label textQ = new Label(qwest.getText());
+        textQ.setWrapText(true);
         QwestVBox.getChildren().addAll(NumberQwest, textQ);
         switch (qwest.getTypeQwest()){
             case 0: {
                 for (String item: qwest.getAllAnswer()){
                     RadioButton radioButton = new RadioButton(item);
                     radioButton.setToggleGroup(group);
+                    radioButton.setWrapText(true);
                     QwestVBox.getChildren().add(radioButton);
                 }
                 break;
@@ -84,7 +86,9 @@ public class TestController extends VBox {
             case 2: {
                 checkBoxes = new ArrayList<>();
                 for (String item: qwest.getAllAnswer()){
-                    checkBoxes.add(new CheckBox(item));
+                    CheckBox checkBox = new CheckBox(item);
+                    checkBox.setWrapText(true);
+                    checkBoxes.add(checkBox);
                 }
                 QwestVBox.getChildren().addAll(checkBoxes);
                 break;
@@ -99,6 +103,13 @@ public class TestController extends VBox {
                     HBox hBox = new HBox(namber, comboBox);
                     QwestVBox.getChildren().add(hBox);
                 }
+                break;
+            }case 4: {
+                RadioButton radioYes = new RadioButton("да");
+                RadioButton radioNo = new RadioButton("нет");
+                radioYes.setToggleGroup(group);
+                radioNo.setToggleGroup(group);
+                QwestVBox.getChildren().addAll(radioYes,radioNo);
                 break;
             }
             default: break;
@@ -118,7 +129,7 @@ public class TestController extends VBox {
 
     @FXML
     void initialize(){
-        numberQwest=0;
+        numberQwest = 0;
         qwests = App.qwests;
         answers = new boolean[qwests.size()];
         group = new ToggleGroup();
@@ -127,7 +138,7 @@ public class TestController extends VBox {
     @FXML
     public void switchToPrimary(ActionEvent event) throws IOException {
         int rezalt = 0;
-        for (int i=0; i<answers.length; i++){
+        for (int i = 0; i < answers.length; i++){
             rezalt += answers[i] ? 1 : 0;
         }
         System.out.println(rezalt);

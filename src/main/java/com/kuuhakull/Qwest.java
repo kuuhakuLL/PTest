@@ -36,9 +36,6 @@ public class Qwest {
         if (correctAnswer.size()!=answer.size()){
             return false;
         }
-        if (!correctAnswer.containsAll(answer)){
-            System.out.println(answer.get(0));
-        };
         for (String item: answer){
             if (!correctAnswer.contains(item)){
                 return false;

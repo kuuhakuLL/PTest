@@ -113,7 +113,7 @@ Insert into Dstractors (idQwests, Dstractor) value (15, "процесс прот
 
 Insert into Qwest (idDirection, Title, Test, TypeQwest) 
    value (1, "Установите последовательность проявлений возрастного кризиса, по Л. С. Выготскому, от начала кризиса до его разрешения.", true, 3);
-Insert into Answers (idQwests, Answer) value (16, "возникновение попытка раскрывается создание");
+Insert into Answers (idQwests, Answer) value (16, "возникновениепопыткараскрываетсясоздание");
 Insert into Dstractors (idQwests, Dstractor) value (16, "возникновение противоречия между объективной и субъективной составляющими социальной ситуации развития");
 Insert into Dstractors (idQwests, Dstractor) value (16, "попытка непосредственно реализовать наиболее общие представления об идеальной форме в реальных жизненных ситуациях");
 Insert into Dstractors (idQwests, Dstractor) value (16, "создание новой социальной ситуации развития");
