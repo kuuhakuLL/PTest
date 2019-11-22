@@ -18,22 +18,7 @@ import javafx.scene.layout.VBox;
 public class PrimaryController {
 
     @FXML
-    VBox vBox;
-
-//    @FXML
-//    void initialize(){
-//        Map map = App.Tests;
-//        for (Map.Entry<Integer, String> pair: map) {
-//            Button button = new Button();
-//            button.setUserData(pair.getKey());
-//            button.setText(pair.getValue());
-//            button.setOnAction(this::switchToSecondary);
-//            vBox.getChildren().add(button);
-//        }
-//    }
-
-    @FXML
-    private void switchToSecondary(ActionEvent event) throws IOException {
+    private void switchToSecondary(ActionEvent event) throws IOException, ClassNotFoundException {
         Button button = (Button)event.getSource();
         String title = button.getText();
         int id = Integer.parseInt((String)button.getUserData());

@@ -31,10 +31,12 @@ public class TestController extends VBox {
             case 4:{
                 RadioButton selection = (RadioButton) group.getSelectedToggle();
                 reply.add(selection.getText());
+                qwest.setUserAnswer(selection.getText());
                 break;
             }
             case 1: {
                 reply.add(field.getText().toLowerCase());
+                qwest.setUserAnswer(field.getText());
                 field = null;
                 break;
             }
@@ -74,12 +76,16 @@ public class TestController extends VBox {
                     RadioButton radioButton = new RadioButton(item);
                     radioButton.setToggleGroup(group);
                     radioButton.setWrapText(true);
+                    if(qwest.getUserAnswer().equals(item)){
+                        radioButton.setSelected(true);
+                    }
                     QwestVBox.getChildren().add(radioButton);
                 }
                 break;
             }
             case 1: {
                 field = new TextField();
+                field.setText(qwest.getUserAnswer());
                 QwestVBox.getChildren().add(field);
                 break;
             }
@@ -109,6 +115,12 @@ public class TestController extends VBox {
                 RadioButton radioNo = new RadioButton("нет");
                 radioYes.setToggleGroup(group);
                 radioNo.setToggleGroup(group);
+                if(qwest.getUserAnswer().equals("да")){
+                    radioYes.setSelected(true);
+                }
+                if(qwest.getUserAnswer().equals("нет")){
+                    radioYes.setSelected(true);
+                }
                 QwestVBox.getChildren().addAll(radioYes,radioNo);
                 break;
             }

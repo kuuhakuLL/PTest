@@ -15,11 +15,10 @@ public class App extends Application {
     private static Scene scene;
     private static Stage root;
     static ArrayList<Qwest> qwests;
-    static HashMap<Integer,String> Tests;
-    static int Id;
+    static HashMap<Integer,String> tests;
+
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
-        Tests = TestLoader.selectTests();
         root = stage;
         scene = new Scene(loadFXML("primary"));
         root.setScene(scene);
@@ -31,14 +30,14 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void setRoot(String fxml, String title, int id) throws IOException {
-        Id = id;
+    static void setRoot(String fxml, String title, int id) throws IOException, ClassNotFoundException {
+        tests = TestLoader.selectTests(id);
         root.setTitle(title);
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void setRoot(String fxml, Boolean test) throws IOException, ClassNotFoundException {
-        qwests = TestLoader.selectQwests(test, Id);
+    static void setRoot(String fxml, int id) throws IOException, ClassNotFoundException {
+        qwests = TestLoader.selectQwests(id);
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -51,7 +50,5 @@ public class App extends Application {
         launch();
     }
 
-    public HashMap<Integer, String> getTests() {
-        return Tests;
-    }
+    public static HashMap<Integer, String> getTests() { return tests; }
 }

@@ -9,6 +9,7 @@ public class Qwest {
     private HashSet<String> correctAnswer;
     private ArrayList<String> allAnswer;
     private byte typeQwest;
+    private String userAnswer;
 
     Qwest(int id, String title, ArrayList<String> answer, ArrayList<String> distract, byte type){
         idQwest = id;
@@ -18,6 +19,7 @@ public class Qwest {
         correctAnswer.addAll(answer);
         allAnswer.addAll(distract);
         typeQwest = type;
+        userAnswer="";
     }
 
     public String getText() {
@@ -42,5 +44,13 @@ public class Qwest {
             }
         }
         return true;
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }
