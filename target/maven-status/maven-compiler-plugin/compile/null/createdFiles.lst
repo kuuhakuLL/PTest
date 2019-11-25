@@ -6,4 +6,5 @@ com/kuuhakull/App.class
 module-info.class
 com/kuuhakull/TestController.class
 com/kuuhakull/SecondaryController$2.class
+com/kuuhakull/EndTestController.class
 com/kuuhakull/TestLoader.class

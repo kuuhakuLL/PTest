@@ -16,6 +16,7 @@ public class App extends Application {
     private static Stage root;
     static ArrayList<Qwest> qwests;
     static HashMap<Integer,String> tests;
+    static int rez;
 
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
@@ -38,6 +39,11 @@ public class App extends Application {
 
     static void setRoot(String fxml, int id) throws IOException, ClassNotFoundException {
         qwests = TestLoader.selectQwests(id);
+        scene.setRoot(loadFXML(fxml));
+    }
+    static void setRoot(String fxml, int rezalt, ArrayList<Qwest> q) throws IOException {
+        qwests = q;
+        rez= rezalt;
         scene.setRoot(loadFXML(fxml));
     }
 

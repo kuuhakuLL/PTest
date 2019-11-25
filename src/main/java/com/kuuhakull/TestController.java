@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.Chart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -56,11 +57,18 @@ public class TestController extends VBox {
                 comboBoxes = null;
                 reply.add(rezalt);
                 break;
+            } case 5: {
+                String rezalt = "";
+                for(int i=0; i<comboBoxes.size(); i++){
+                    rezalt += Integer.toString(i+1) + comboBoxes.get(i).getValue().charAt(0);
+                }
+                comboBoxes = null;
+                reply.add(rezalt);
+                break;
             }
             default: break;
         }
         answers[numberQwest] = qwest.chekAnswer(reply);
-        System.out.println(answers[numberQwest]);
         setNumberQwest(1);
     }
 
@@ -123,6 +131,28 @@ public class TestController extends VBox {
                 }
                 QwestVBox.getChildren().addAll(radioYes,radioNo);
                 break;
+            } case 5: {
+                comboBoxes = new ArrayList<>();
+                ArrayList<String> answers = new ArrayList<>();
+                ArrayList<String> numbers = new ArrayList<>();
+                for (String item: qwest.getAllAnswer()){
+                    if(item.charAt(0)>'0' && item.charAt(0)<'9'){
+                        numbers.add(item);
+                    }else {
+                        answers.add(item);
+                    }
+                }
+                ObservableList<String> allAnswers = FXCollections.observableList(answers);
+                for (String item: numbers){
+                    ComboBox<String> comboBox = new ComboBox<String>(allAnswers);
+                    comboBox.setMaxWidth(600);
+                    comboBoxes.add(comboBox);
+                    Label namber = new Label(item);
+                    namber.setMinWidth(150);
+                    HBox hBox = new HBox(namber, comboBox);
+                    QwestVBox.getChildren().add(hBox);
+                }
+                break;
             }
             default: break;
         }
@@ -148,13 +178,12 @@ public class TestController extends VBox {
         setNumberQwest(0);
     }
     @FXML
-    public void switchToPrimary(ActionEvent event) throws IOException {
+    public void switchToEnd(ActionEvent event) throws IOException {
         int rezalt = 0;
         for (int i = 0; i < answers.length; i++){
             rezalt += answers[i] ? 1 : 0;
         }
-        System.out.println(rezalt);
-        App.setRoot("primary","");
+        App.setRoot("endTest", rezalt, qwests);
     }
     @FXML
     public void nextQwest(ActionEvent event)throws IOException{

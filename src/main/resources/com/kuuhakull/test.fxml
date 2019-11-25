@@ -14,10 +14,10 @@
         <HBox spacing="10">
             <padding><Insets right="25" left="25"/></padding>
             <children>
-                <Button fx:id="BackButton" onAction="#backQwest">Назад</Button>
-                <Button fx:id="NextButton" onAction="#nextQwest">Вперед</Button>
-                <Button fx:id="ReplyQwest" onAction="#replyQwest">Ответить</Button>
-                <Button fx:id="PrimaryButton" onAction="#switchToPrimary" >Завершить</Button>
+                <Button onAction="#backQwest">Назад</Button>
+                <Button onAction="#nextQwest">Вперед</Button>
+                <Button onAction="#replyQwest">Ответить</Button>
+                <Button onAction="#switchToEnd" >Завершить</Button>
             </children>
         </HBox>
     </children>
