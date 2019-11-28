@@ -17,7 +17,7 @@ public class App extends Application {
     static ArrayList<Qwest> qwests;
     static HashMap<Integer,String> tests;
     static int rez;
-
+    static String title;
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
         root = stage;
@@ -31,9 +31,10 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void setRoot(String fxml, String title, int id) throws IOException, ClassNotFoundException {
+    static void setRoot(String fxml, String t, int id) throws IOException, ClassNotFoundException {
         tests = TestLoader.selectTests(id);
-        root.setTitle(title);
+        title = t;
+        root.setTitle(t);
         scene.setRoot(loadFXML(fxml));
     }
 

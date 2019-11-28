@@ -27,7 +27,7 @@ Select IdTest, Title From Tests
 create table Qwests(
    IdQwest INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
    idTest INT,
-   Title VARCHAR(1000),
+   Title VARCHAR(1500),
    TypeQwest TINYINT UNSIGNED,
    FOREIGN KEY (idtest) REFERENCES Tests (IdTest) ON DELETE CASCADE
 )CHARACTER SET utf8;

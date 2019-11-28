@@ -30,6 +30,8 @@ public class Qwest {
         return allAnswer;
     }
 
+    public HashSet<String> getCorrectAnswer() { return correctAnswer; }
+
     public byte getTypeQwest() {
         return typeQwest;
     }

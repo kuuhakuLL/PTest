@@ -1,6 +1,6 @@
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "Установите соответствие.", 5);
-Insert into Answers (idQwest, Answer) value (74, "1Б2Д4А4С"); 
+Insert into Answers (idQwest, Answer) value (74, "1Б2Д3А4С"); 
 Insert into Dstractors (idQwest, Dstractor) value (74, "1.Методы обучения");
 Insert into Dstractors (idQwest, Dstractor) value (74, "2.Процесс обучения");
 Insert into Dstractors (idQwest, Dstractor) value (74, "4.Формы обучения");
@@ -12,7 +12,7 @@ Insert into Dstractors (idQwest, Dstractor) value (74, "Д.Целенаправ�
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "Установите соответствие.", 5);
-Insert into Answers (idQwest, Answer) value (75, "1Б2Д4А4С"); 
+Insert into Answers (idQwest, Answer) value (75, "1Б2Д3А4С"); 
 Insert into Dstractors (idQwest, Dstractor) value (75, "1.Содержание образования");
 Insert into Dstractors (idQwest, Dstractor) value (75, "2.Учебная деятельность");
 Insert into Dstractors (idQwest, Dstractor) value (75, "4.Учебная задача");
@@ -34,8 +34,7 @@ Insert into Dstractors (idQwest, Dstractor) value (76, "Все ответы не
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "Установите соответствие.", 5);
-Insert into Answers (idQwest, Answer) value (77, "1Б2А4Г4Д"); 
-Insert into Dstractors (idQwest, Dstractor) value (77, "1Б2А4Г4Д");
+Insert into Answers (idQwest, Answer) value (77, "1Б2А3Г4Д"); 
 Insert into Dstractors (idQwest, Dstractor) value (77, "1.Содержание образования");
 Insert into Dstractors (idQwest, Dstractor) value (77, "2.Формы обучения");
 Insert into Dstractors (idQwest, Dstractor) value (77, "4.Принципы обучения");
@@ -85,10 +84,10 @@ Insert into Dstractors (idQwest, Dstractor) value (82, "Учитель не ра
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "При каких особенностях учащихся рационально применять репродуктивные методы?", 0);
-Insert into Answers (idQwest, Answer) value (84, "Ученики еще не готовы к проблемному изучению этой темы"); 
-Insert into Dstractors (idQwest, Dstractor) value (84, "Ученики еще не готовы к проблемному изучению этой темы");
-Insert into Dstractors (idQwest, Dstractor) value (84, "Ученики готовы к усвоению информации только словесными методами");
-Insert into Dstractors (idQwest, Dstractor) value (84, "Ученики готовы к самостоятельному изучению данной темы");
+Insert into Answers (idQwest, Answer) value (83, "Ученики еще не готовы к проблемному изучению этой темы"); 
+Insert into Dstractors (idQwest, Dstractor) value (83, "Ученики еще не готовы к проблемному изучению этой темы");
+Insert into Dstractors (idQwest, Dstractor) value (83, "Ученики готовы к усвоению информации только словесными методами");
+Insert into Dstractors (idQwest, Dstractor) value (83, "Ученики готовы к самостоятельному изучению данной темы");
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "К приемам стимулирования интереса к учению относятся:", 0);
@@ -226,13 +225,13 @@ Insert into Dstractors (idQwest, Dstractor) value (102, "психологией"
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "Установите соответствие:", 5); 
-Insert into Answers (idQwest, Answer) value (103, "1в2а4б");
+Insert into Answers (idQwest, Answer) value (103, "1В2А3Б");
 Insert into Dstractors (idQwest, Dstractor) value (103, "1.Функции");
 Insert into Dstractors (idQwest, Dstractor) value (103, "2.Виды");
-Insert into Dstractors (idQwest, Dstractor) value (103, "4.Методы проверки");
-Insert into Dstractors (idQwest, Dstractor) value (103, "а)текущая, итоговая, контрольная, инспекторская");
-Insert into Dstractors (idQwest, Dstractor) value (103, "б)текущее наблюдение, письменная проверка, практическая проверка");
-Insert into Dstractors (idQwest, Dstractor) value (103, "в)систематичность, всесторонность, объективность, познавательность, дифференцированность, интерес и полезность");
+Insert into Dstractors (idQwest, Dstractor) value (103, "3.Методы проверки");
+Insert into Dstractors (idQwest, Dstractor) value (103, "А)текущая, итоговая, контрольная, инспекторская");
+Insert into Dstractors (idQwest, Dstractor) value (103, "Б)текущее наблюдение, письменная проверка, практическая проверка");
+Insert into Dstractors (idQwest, Dstractor) value (103, "В)систематичность, всесторонность, объективность, познавательность, дифференцированность, интерес и полезность");
 
 Insert into Qwests (idTest, Title, TypeQwest)
    value (4, "По какому признаку проще всего определить тип и структуру урока:", 0); 

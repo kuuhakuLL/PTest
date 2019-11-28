@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.Chart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,9 +19,10 @@ public class TestController extends VBox {
     private TextField field;
     private ArrayList<CheckBox> checkBoxes;
     private ArrayList<ComboBox<String>> comboBoxes;
-    private boolean [] answers;
+    private int [] answers;
     @FXML
     private VBox QwestVBox;
+
 
     @FXML
     public void replyQwest(ActionEvent event){
@@ -30,9 +30,13 @@ public class TestController extends VBox {
         switch (qwest.getTypeQwest()){
             case 0:
             case 4:{
-                RadioButton selection = (RadioButton) group.getSelectedToggle();
-                reply.add(selection.getText());
-                qwest.setUserAnswer(selection.getText());
+                try {
+                    RadioButton selection = (RadioButton) group.getSelectedToggle();
+                    reply.add(selection.getText());
+                    qwest.setUserAnswer(selection.getText());
+                }catch (NullPointerException e){
+                    reply.add("");
+                }
                 break;
             }
             case 1: {
@@ -51,24 +55,44 @@ public class TestController extends VBox {
             }
             case 3: {
                 String rezalt = "";
-                for(ComboBox<String> item: comboBoxes){
-                    rezalt += item.getValue().split(" ")[0];
-                }
-                comboBoxes = null;
-                reply.add(rezalt);
+                try {
+                    for (ComboBox<String> item : comboBoxes) {
+                        rezalt += item.getValue().split(" ")[0];
+                    }
+                    comboBoxes = null;
+                    reply.add(rezalt);
+                }catch (NullPointerException e){}
                 break;
             } case 5: {
                 String rezalt = "";
-                for(int i=0; i<comboBoxes.size(); i++){
-                    rezalt += Integer.toString(i+1) + comboBoxes.get(i).getValue().charAt(0);
+                try {
+                    for(int i=0; i<comboBoxes.size(); i++){
+                        rezalt += Integer.toString(i+1) + comboBoxes.get(i).getValue().charAt(0);
+                    }
+                    comboBoxes = null;
+                    reply.add(rezalt);
+                }catch (NullPointerException e){}
+                break;
+            } case 6:{
+                try {
+                    RadioButton selection = (RadioButton) group.getSelectedToggle();
+                    qwest.setUserAnswer(selection.getText());
+                    ArrayList<String> ans = qwest.getAllAnswer();
+                    for (int i = 0; i <ans.size() ; i++){
+                        if (ans.get(i).equals(qwest.getUserAnswer())){
+                            answers[numberQwest] = i;
+                        }
+                    }
+                }catch (NullPointerException e){
+                    reply.add("");
                 }
-                comboBoxes = null;
-                reply.add(rezalt);
                 break;
             }
             default: break;
         }
-        answers[numberQwest] = qwest.chekAnswer(reply);
+        if(qwest.chekAnswer(reply)) {
+            answers[numberQwest] = 1;
+        }
         setNumberQwest(1);
     }
 
@@ -79,7 +103,8 @@ public class TestController extends VBox {
         textQ.setWrapText(true);
         QwestVBox.getChildren().addAll(NumberQwest, textQ);
         switch (qwest.getTypeQwest()){
-            case 0: {
+            case 0:
+            case 6:{
                 for (String item: qwest.getAllAnswer()){
                     RadioButton radioButton = new RadioButton(item);
                     radioButton.setToggleGroup(group);
@@ -173,7 +198,7 @@ public class TestController extends VBox {
     void initialize(){
         numberQwest = 0;
         qwests = App.qwests;
-        answers = new boolean[qwests.size()];
+        answers = new int[qwests.size()];
         group = new ToggleGroup();
         setNumberQwest(0);
     }
@@ -181,7 +206,7 @@ public class TestController extends VBox {
     public void switchToEnd(ActionEvent event) throws IOException {
         int rezalt = 0;
         for (int i = 0; i < answers.length; i++){
-            rezalt += answers[i] ? 1 : 0;
+            rezalt += answers[i];
         }
         App.setRoot("endTest", rezalt, qwests);
     }

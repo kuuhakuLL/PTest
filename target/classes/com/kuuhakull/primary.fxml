@@ -13,7 +13,7 @@
         fx:controller="com.kuuhakull.PrimaryController"
         minHeight="500.0" minWidth="800.0">
    <children>
-      <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="150.0"
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0"
                  pickOnBounds="true" preserveRatio="true"
                  GridPane.columnIndex="2" GridPane.rowIndex="0"
       >

@@ -21,6 +21,8 @@ public class EndTestController {
     }
 
     public void switchToEnd(ActionEvent event) throws IOException {
+        String student =name.getText() + " " + surname.getText();
+        new CreateExele(App.qwests, App.rez, App.title, student);
         App.setRoot("primary", "");
     }
 
